@@ -1,0 +1,692 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Group Equipment Inventory</title>
+  <script type="text/javascript" nonce="8c279c817a024655a5f124298c1" src="//local.adguard.org?ts=1774034548956&amp;type=content-script&amp;dmn=ppl-ai-code-interpreter-files.s3.amazonaws.com&amp;url=https%3A%2F%2Fppl-ai-code-interpreter-files.s3.amazonaws.com%2Fweb%2Fdirect-files%2F736b404d1411afc26ba4c9b74675ae0d%2F309d53b3-2747-489b-87ec-43508916e5f9%2Fb47169cc.html%3Fresponse-content-disposition%3Dattachment%253B%2520filename%253Deq_tracker_fluentish_date_local.html%253B%2520filename%252A%253DUTF-8%2527%2527eq_tracker_fluentish_date_local.html%26AWSAccessKeyId%3DASIA2F3EMEYESXL7QTF7%26Signature%3Dg9gm%252F6i23Dl9RYUmb9433IH0SoY%253D%26x-amz-security-token%3DIQoJb3JpZ2luX2VjEHMaCXVzLWVhc3QtMSJGMEQCIHBf6JkdlVxrQE%252B0WFCLJjncmPrR5gk7zvY1Vo%252BA6ftLAiAafymNbTrH2Gg%252FoNQU7NkGtPpn9q8YDGiBulQq%252BbR8DCrzBAg8EAEaDDY5OTc1MzMwOTcwNSIMrU2zM%252FAJHvdSUjqiKtAEBAaaAKO6G77vXS6oYhL0QP0d7xyhW2Rd8lYDYS9oDqAv37n%252Byg5N9ha8v4FqiwbZznxwYcrF5l569ZxozC%252Fk6lENnQBCRjk7T4mf8ofe7JmeQph%252FrQF%252Bfy1B2qZufK5rmG%252FiaugV%252F3rVg6B8IVN8XQHLpDhCAV%252FUyCs6A8SrEGmpGHqwmtJSUNuqzbkw63Dw5Xk3naJf6atwev69okfpl3jSNaPNYMeigpRsUWfD1XwsUsyFc8u46cIBlSW5o3nGGMYzwx90TMPkmmrzlxB2tQEExfec8zBmdeScOkrR2X3qDY1CTzQ5Aw6U4tz7m%252BVAsT2JWhZsULeJlD90DdCjpMFm%252BN5jrm71vy9%252B2o3tKMFtBI1fKpluaxOWxVVggYYebUVMjKIN2XxsBrf%252ByZpzcZhFl7g9N5Uz%252B7rqWEDn6lOg0fXYoZSi7xnQL8%252B54GtXLe7cly09Aws3bqywYWj1gaabFPu1eIuWltVDtHWatfEcMDSQwjXTGUEr4QLvn8%252F%252Ffbb5ROYTTodnIDvzm5Qb1Z3PBUPZQ42o7DhSgMxwwITvR7GRB%252FJEOczQi08XTyWNg2b1uosDPEFO8im%252FOSrE99LUojrTHQkianWMkkSQ7yRoPHY70ib8WNK4aLsbbaIYbLE9%252BoRR4ctlumvSyVFKyTsMEldS0hl6oDXhbEI7%252Fl0U%252Fgqjg5KLaegZXZ1hehss7NTW1uNN56o%252FeX%252BoCAXKeRVFvvwZowM9T%252B9xmpoNfllUurkyCl75KPh24AEOZ83048FQ9UC6cP6xi7LQyheXQjDUq%252FbNBjqZAbbsES9qbn6cWgFuKWtnHY6t6zJaQFuRToNbzvFc7AAN9CKLQbKj2AChCq0rBOHwaolxrPzZb7BmFz6biaW7IQYZ7Ez2nqKkjGeeHFN81sUePFRDBI3lwnA93UFEQwnj1DhN16RbjLkg%252FzE5OWJgB7YxwR3rKzqTxBvpDJc0dxQjtFZtLbLZ60PLBf%252FJtujGjgLOdIi0RPqY%252FA%253D%253D%26Expires%3D1774035266&amp;app=ai.perplexity.comet&amp;css=3&amp;js=1&amp;rel=1&amp;rji=1&amp;sbe=1"></script><script type="text/javascript" nonce="8c279c817a024655a5f124298c1" src="//local.adguard.org?ts=1774034548956&amp;name=AdGuard%20Extra&amp;type=user-script"></script><script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js"></script>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    [data-theme="dark"] { --bg:#201f1e; --surface:#252423; --surface2:#323130; --border:#3b3a39; --accent:#479ef5; --accent2:#479ef5; --green:#6bb700; --red:#f1707b; --yellow:#fce100; --text:#f3f2f1; --muted:#c8c6c4; --radius:8px; --shadow:0 1px 3px rgba(0,0,0,0.6),0 4px 12px rgba(0,0,0,0.3); }
+    [data-theme="light"] { --bg:#f5f5f5; --surface:#ffffff; --surface2:#f3f2f1; --border:#e1dfdd; --accent:#115ea3; --accent2:#115ea3; --green:#107c10; --red:#d13438; --yellow:#ffb900; --text:#201f1e; --muted:#605e5c; --radius:8px; --shadow:0 1px 2px rgba(0,0,0,0.08),0 2px 6px rgba(0,0,0,0.04); }
+
+    body { font-family:'Segoe UI',system-ui,sans-serif; background:var(--bg); color:var(--text); min-height:100vh; transition:background 0.2s, color 0.2s; }
+
+    /* ── Header ───────────────────────────────────── */
+    header {
+      background:var(--surface);
+      border-bottom:1px solid color-mix(in srgb, var(--border) 80%, #ffffff 10%);
+      padding:14px 20px; display:flex; align-items:center;
+      justify-content:space-between; position:sticky; top:0; z-index:100;
+      box-shadow:0 10px 25px rgba(15,23,42,0.18);
+    }
+    .header-left { display:flex; align-items:center; gap:10px; background:none; border:none; }
+    header h1 { font-size:1.1rem; font-weight:500; letter-spacing:0.01em; }
+    .header-icon { color:var(--text); display:flex; align-items:center; }
+
+    .toggle-btn {
+      background:var(--surface2); border:1px solid var(--border); border-radius:8px;
+      color:var(--muted); cursor:pointer; padding:7px; display:flex; align-items:center;
+      justify-content:center; transition:all 0.2s;
+    }
+    .toggle-btn:hover { color:var(--text); border-color:var(--text); }
+
+    /* ── Layout ───────────────────────────────────── */
+    .container { max-width:1200px; margin:0 auto; padding:20px 14px; }
+
+    /* ── Summary tiles ────────────────────────────── */
+    .summary-cards { display:flex; gap:10px; margin-bottom:20px; }
+    .sc {
+      flex:1 1 0; background:var(--surface); border:1px solid var(--border);
+      border-radius:var(--radius); padding:14px 8px; text-align:center; min-width:0;
+      display:flex; flex-direction:column; align-items:center; gap:4px;
+      box-shadow:var(--shadow);
+    }
+    .sc .num { font-size:1.5rem; font-weight:700; line-height:1; }
+    .sc .lbl { font-size:0.68rem; color:var(--muted); white-space:nowrap; overflow:hidden; text-overflow:ellipsis; max-width:100%; }
+    .num-blue{color:var(--text);} .num-green{color:var(--green);}
+    .num-yellow{color:var(--yellow);}
+
+    /* ── Tabs ─────────────────────────────────────── */
+    .tabs {
+      display:flex; gap:4px; background:var(--surface);
+      border-radius:var(--radius); padding:5px; margin-bottom:20px;
+      border:1px solid color-mix(in srgb, var(--border) 70%, #ffffff 8%);
+      overflow-x:auto; -webkit-overflow-scrolling:touch;
+      box-shadow:0 12px 28px rgba(15,23,42,0.16);
+    }
+    .tab-btn {
+      flex:1; min-width:fit-content; padding:9px 14px; border:none;
+      background:transparent; color:var(--muted); font-size:0.85rem;
+      font-weight:500; border-radius:8px; cursor:pointer; transition:all 0.2s;
+      white-space:nowrap; display:flex; align-items:center; justify-content:center; gap:6px;
+      font-family:inherit;
+    }
+    .tab-btn.active { background:var(--accent); color:#fff; }
+    .tab-btn:hover:not(.active) { background:var(--surface2); color:var(--text); }
+    .tab-pane { display:none; } .tab-pane.active { display:block; }
+
+    /* ── Grid / Cards ─────────────────────────────── */
+    .grid { display:grid; grid-template-columns:1fr 1fr; gap:20px; }
+    .card { border-radius:var(--radius);
+      background:var(--surface);
+      border:1px solid color-mix(in srgb, var(--border) 75%, #ffffff 10%);
+      border-radius:var(--radius); padding:18px;
+      box-shadow:0 18px 35px rgba(15,23,42,0.20);
+    }
+    .card h2 { font-size:0.95rem; font-weight:600; margin-bottom:4px; display:flex; align-items:center; gap:8px; }
+    .card-sub { font-size:0.78rem; color:var(--muted); margin-bottom:16px; }
+    .card-icon { display:flex; align-items:center; color:var(--text); }
+    .card-icon.green { color:var(--green); } .card-icon.purple { color:var(--accent2); }
+    .card-icon.yellow { color:var(--yellow); }
+    .full { grid-column:1/-1; }
+
+    /* ── Form elements ────────────────────────────── */
+
+
+    label { display:block; font-size:0.75rem; color:var(--muted); margin-bottom:5px; font-weight:500; text-transform:uppercase; letter-spacing:.05em; }
+    input, select, textarea {
+      width:100%; background:var(--surface2); border:1px solid var(--border);
+      border-radius:8px; color:var(--text); font-size:0.875rem; padding:10px 12px;
+      outline:none; transition:border-color 0.2s; margin-bottom:12px; font-family:inherit;
+    }
+    input:focus, select:focus, textarea:focus { border-color:var(--text); }
+    select option { background:var(--surface); color:var(--text); }
+    textarea { resize:vertical; min-height:70px; }
+
+    /* ── Buttons ──────────────────────────────────── */
+    .btn { border-radius:999px;
+      padding:10px 16px; border:none; border-radius:8px; font-size:0.875rem;
+      font-weight:600; cursor:pointer; transition:all 0.2s; display:inline-flex;
+      align-items:center; gap:6px; font-family:inherit;
+    }
+    .btn-primary { background:var(--accent); color:#fff; width:100%; justify-content:center; }
+    .btn-primary:hover { opacity:0.9; transform:translateY(-1px); }
+    .btn-sm { padding:5px 9px; font-size:0.75rem; }
+    .btn-danger  { background:rgba(239,68,68,.12); color:var(--red);    border:1px solid rgba(239,68,68,.25); }
+    .btn-warning { background:rgba(245,158,11,.12); color:var(--yellow); border:1px solid rgba(245,158,11,.25); }
+    .btn-return  { background:rgba(34,197,94,.12);  color:var(--green);  border:1px solid rgba(34,197,94,.25); }
+    .btn-danger:hover  { background:rgba(239,68,68,.22); }
+    .btn-warning:hover { background:rgba(245,158,11,.22); }
+    .btn-return:hover  { background:rgba(34,197,94,.22); }
+
+    /* ── List items ───────────────────────────────── */
+    .list-items { display:flex; flex-direction:column; gap:8px; margin-top:4px; }
+    .list-item {
+      background:var(--surface2);
+      border:1px solid color-mix(in srgb, var(--border) 70%, #ffffff 8%);
+      border-radius:10px; padding:11px 13px; display:flex; align-items:center;
+      justify-content:space-between; gap:10px;
+      box-shadow:0 10px 25px rgba(15,23,42,0.15);
+    }
+    .li-info { flex:1; min-width:0; }
+    .li-name { font-size:0.875rem; font-weight:500; white-space:nowrap; overflow:hidden; text-overflow:ellipsis; }
+    .li-meta { font-size:0.75rem; color:var(--muted); margin-top:2px; display:flex; align-items:center; gap:4px; }
+    .act-btns { display:flex; gap:5px; flex-shrink:0; }
+
+    /* ── Badges ───────────────────────────────────── */
+    .badge { padding:3px 9px; border-radius:20px; font-size:0.7rem; font-weight:600; white-space:nowrap; display:inline-flex; align-items:center; gap:4px; }
+    .badge-available   { background:rgba(34,197,94,.12);  color:var(--green);  }
+    .badge-taken       { background:rgba(245,158,11,.12); color:var(--yellow); }
+    .badge-maintenance { background:rgba(239,68,68,.12);  color:var(--red);    }
+
+    /* ── Table ────────────────────────────────────── */
+    .table-wrap { overflow-x:auto; -webkit-overflow-scrolling:touch; }
+    table { width:100%; border-collapse:collapse; font-size:0.85rem; min-width:460px; }
+    thead th { text-align:left; padding:9px 13px; color:var(--muted); font-size:0.7rem; font-weight:600; text-transform:uppercase; letter-spacing:.05em; border-bottom:1px solid var(--border); }
+    tbody tr { border-bottom:1px solid var(--border); }
+    tbody tr:last-child { border-bottom:none; }
+    tbody td { padding:11px 13px; }
+    tbody tr:hover td { background:var(--surface2); }
+
+    /* ── Search bar ───────────────────────────────── */
+    .sbar { position:relative; margin-bottom:12px; }
+    .sbar input { padding-left:36px; margin-bottom:0; }
+    .sbar-icon { position:absolute; left:10px; top:50%; transform:translateY(-50%); color:var(--muted); display:flex; pointer-events:none; }
+
+    /* ── Filter row ───────────────────────────────── */
+    .filter-row { display:flex; gap:8px; margin-bottom:12px; flex-wrap:wrap; align-items:center; }
+    .filter-row select { width:auto; margin-bottom:0; flex:1; min-width:110px; }
+    .filter-row .sbar { flex:2; min-width:160px; margin-bottom:0; }
+
+    /* ── Form row ─────────────────────────────────── */
+    .form-row { display:grid; grid-template-columns:1fr 1fr; gap:12px; }
+
+    /* ── Empty state ──────────────────────────────── */
+    .empty { text-align:center; padding:28px 16px; color:var(--muted); font-size:0.85rem; }
+    .empty-icon { display:flex; justify-content:center; margin-bottom:8px; opacity:0.4; }
+
+    /* ── Pill ─────────────────────────────────────── */
+    .pill { display:inline-flex; align-items:center; gap:4px; background:rgba(245,158,11,.1); border:1px solid rgba(245,158,11,.2); border-radius:20px; padding:2px 9px; font-size:0.76rem; color:var(--yellow); }
+
+    /* ── Toast ────────────────────────────────────── */
+    #toast {
+      position:fixed; bottom:16px; left:50%; transform:translateX(-50%) translateY(20px);
+      background:var(--surface);
+      border:1px solid color-mix(in srgb, var(--border) 75%, #ffffff 10%);
+      border-radius:999px; padding:10px 18px; font-size:0.875rem;
+      display:flex; align-items:center; gap:8px; z-index:9999; opacity:0; transition:all 0.3s;
+      max-width:calc(100vw - 32px); width:max-content;
+      box-shadow:0 14px 30px rgba(15,23,42,0.22);
+    }
+    #toast.show { opacity:1; transform:translateX(-50%) translateY(0); }
+    .toast-ok  { border-left:3px solid var(--green); }
+    .toast-err { border-left:3px solid var(--red); }
+
+    /* ── Mobile ───────────────────────────────────── */
+    @media(max-width:768px) {
+      .grid { grid-template-columns:1fr; gap:14px; }
+    }
+    @media(max-width:600px) {
+      header { padding:12px 14px; }
+      header h1 { font-size:0.95rem; }
+      .container { padding:12px 10px; }
+      .card { padding:14px; border-radius:10px; }
+      .tab-btn { font-size:0.78rem; padding:8px 10px; }
+      .btn-primary { padding:12px; }
+      .form-row { grid-template-columns:1fr; gap:0; }
+      .act-btns { flex-wrap:wrap; justify-content:flex-end; }
+      .sc { padding:10px 5px; border-radius:8px; }
+      .sc .num { font-size:1.2rem; }
+      .sc .lbl { font-size:0.6rem; }
+      thead th, tbody td { padding:8px 10px; }
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <div class="header-left">
+    <span class="header-icon"><i data-lucide="package" width="20" height="20"></i></span>
+    <h1>Group Equipment Inventory</h1>
+  </div>
+  <button class="toggle-btn" onclick="toggleTheme()" id="theme-toggle" title="Toggle light/dark mode">
+    <i data-lucide="sun" width="16" height="16" id="theme-icon"></i>
+  </button>
+</header>
+
+<div class="container">
+
+  <div class="summary-cards">
+    <div class="sc"><div class="num num-blue"   id="sc-total">0</div><div class="lbl">Total Items</div></div>
+    <div class="sc"><div class="num num-green"  id="sc-avail">0</div><div class="lbl">Available</div></div>
+    <div class="sc"><div class="num num-yellow" id="sc-taken">0</div><div class="lbl">Taken</div></div>
+  </div>
+
+  <div class="tabs">
+    <button class="tab-btn active" id="tbtn-equipment" onclick="showTab('equipment')">
+      <i data-lucide="box" width="15" height="15"></i> Equipment
+    </button>
+    <button class="tab-btn" id="tbtn-transfer" onclick="showTab('transfer')">
+      <i data-lucide="repeat" width="15" height="15"></i> Transfer
+    </button>
+    <button class="tab-btn" id="tbtn-history" onclick="showTab('history')">
+      <i data-lucide="clock" width="15" height="15"></i> History
+    </button>
+  </div>
+
+  <!-- EQUIPMENT TAB -->
+  <div id="tab-equipment" class="tab-pane active">
+    <div class="grid">
+      <div class="card">
+        <h2><span class="card-icon"><i data-lucide="plus-circle" width="17" height="17"></i></span> Take Equipment</h2>
+        <p class="card-sub">Adding an item means you are taking it from the group inventory.</p>
+        <div class="form-row">
+          <div>
+            <label>Category *</label>
+            <input type="text" id="eq-cat" placeholder="e.g. Electronics" list="cat-dl">
+            <datalist id="cat-dl"></datalist>
+          </div>
+          <div>
+            <label>Serial / ID *</label>
+            <input type="text" id="eq-serial" placeholder="e.g. SN-00123">
+          </div>
+        </div>
+        <div class="form-row">
+          <div>
+            <label>Taken By *</label>
+            <input type="text" id="eq-person" placeholder="Your name" list="person-dl">
+            <datalist id="person-dl"></datalist>
+          </div>
+          <div>
+            <label>Date Taken</label>
+            <input type="datetime-local" id="eq-date">
+          </div>
+        </div>
+        <label>Notes</label>
+        <textarea id="eq-notes" placeholder="Reason, condition, or any notes..."></textarea>
+        <button class="btn btn-primary" onclick="addAndTake()">
+          <i data-lucide="log-out" width="16" height="16"></i> Take Equipment
+        </button>
+      </div>
+
+      <div class="card">
+        <div style="display:flex;align-items:center;justify-content:space-between;gap:8px;">
+          <h2><span class="card-icon green"><i data-lucide="clipboard-list" width="17" height="17"></i></span> Inventory List</h2>
+          <button class="btn btn-sm btn-danger" onclick="clearInventory()" title="Delete all items">
+            <i data-lucide="trash-2" width="13" height="13"></i> Clear
+          </button>
+        </div>
+        <p class="card-sub">All equipment currently tracked in the group pool.</p>
+        <div class="sbar">
+          <span class="sbar-icon"><i data-lucide="search" width="15" height="15"></i></span>
+          <input type="text" id="eq-search" placeholder="Search by name, serial, or person..." oninput="renderEqList()">
+        </div>
+        <div class="list-items" id="eq-list"></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- TRANSFER TAB -->
+  <div id="tab-transfer" class="tab-pane">
+    <div class="grid">
+      <div class="card">
+        <h2><span class="card-icon purple"><i data-lucide="arrow-left-right" width="17" height="17"></i></span> Transfer / Return</h2>
+        <p class="card-sub">Transfer to someone else, return to pool, or send to maintenance.</p>
+        <label>Equipment *</label>
+        <select id="tr-eq"><option value="">Select equipment...</option></select>
+        <label>Action *</label>
+        <select id="tr-type" onchange="toggleTransferTo()">
+          <option value="return">Return to Pool</option>
+          <option value="transfer">Transfer to Someone</option>
+          <option value="maintenance">Send to Maintenance</option>
+        </select>
+        <div id="tr-to-wrap">
+          <label>Transfer To *</label>
+          <input type="text" id="tr-person" placeholder="Recipient's name" list="person-dl2">
+          <datalist id="person-dl2"></datalist>
+        </div>
+        <label>Date &amp; Time</label>
+        <input type="datetime-local" id="tr-date">
+        <label>Notes</label>
+        <textarea id="tr-notes" placeholder="Optional notes..."></textarea>
+        <button class="btn btn-primary" onclick="logTransfer()">
+          <i data-lucide="check-circle" width="16" height="16"></i> Confirm Action
+        </button>
+      </div>
+
+      <div class="card">
+        <h2><span class="card-icon yellow"><i data-lucide="zap" width="17" height="17"></i></span> Quick Return</h2>
+        <p class="card-sub">One-click return for currently taken equipment.</p>
+        <div class="list-items" id="qr-list"></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- HISTORY TAB -->
+  <div id="tab-history" class="tab-pane">
+    <div class="card">
+      <h2><span class="card-icon purple"><i data-lucide="clock" width="17" height="17"></i></span> Action History</h2>
+      <div class="filter-row">
+        <div class="sbar">
+          <span class="sbar-icon"><i data-lucide="search" width="15" height="15"></i></span>
+          <input type="text" id="hist-search" placeholder="Search by equipment or person..." oninput="renderHistory()">
+        </div>
+        <select id="hist-type" onchange="renderHistory()">
+          <option value="">All Types</option>
+          <option value="take">Take</option>
+          <option value="return">Return</option>
+          <option value="transfer">Transfer</option>
+          <option value="maintenance">Maintenance</option>
+        </select>
+        <button class="btn btn-sm btn-danger" onclick="clearHistory()">
+          <i data-lucide="trash-2" width="13" height="13"></i> Clear All
+        </button>
+      </div>
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th>#</th><th>Date &amp; Time</th><th>Equipment</th><th>Action</th><th>Person</th><th>Notes</th><th></th></tr></thead>
+          <tbody id="hist-tbody"></tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<div id="toast"></div>
+
+<script>
+(function () {
+  // ── State ──────────────────────────────────────────────────────────────
+  var items   = JSON.parse(localStorage.getItem('grp_items') || '[]');
+  var logBook = JSON.parse(localStorage.getItem('grp_log')   || '[]');
+
+  function persist() {
+    localStorage.setItem('grp_items',  JSON.stringify(items));
+    localStorage.setItem('grp_log',    JSON.stringify(logBook));
+  }
+
+  // ── Theme ──────────────────────────────────────────────────────────────
+  var theme = localStorage.getItem('grp_theme') || 'dark';
+  document.documentElement.setAttribute('data-theme', theme);
+  updateThemeIcon();
+
+  window.toggleTheme = function () {
+    theme = theme === 'dark' ? 'light' : 'dark';
+    document.documentElement.setAttribute('data-theme', theme);
+    localStorage.setItem('grp_theme', theme);
+    updateThemeIcon();
+    lucide.createIcons();
+  };
+
+  function updateThemeIcon() {
+    var el = document.getElementById('theme-icon');
+    if (!el) return;
+    el.setAttribute('data-lucide', theme === 'dark' ? 'sun' : 'moon');
+  }
+
+  // ── Toast ──────────────────────────────────────────────────────────────
+  var toastTimer;
+  function toast(msg, isErr) {
+    var el = document.getElementById('toast');
+    el.textContent = msg;
+    el.className = isErr ? 'show toast-err' : 'show toast-ok';
+    clearTimeout(toastTimer);
+    toastTimer = setTimeout(function () { el.className = ''; }, 3000);
+  }
+
+  // ── Tabs ───────────────────────────────────────────────────────────────
+  window.showTab = function (name) {
+    document.querySelectorAll('.tab-pane').forEach(function (p) { p.classList.remove('active'); });
+    document.querySelectorAll('.tab-btn').forEach(function (b) { b.classList.remove('active'); });
+    document.getElementById('tab-' + name).classList.add('active');
+    document.getElementById('tbtn-' + name).classList.add('active');
+    renderAll();
+  };
+
+  // ── Add & Take ─────────────────────────────────────────────────────────
+  window.addAndTake = function () {
+    var cat    = document.getElementById('eq-cat').value.trim();
+    var serial = document.getElementById('eq-serial').value.trim();
+    var person = document.getElementById('eq-person').value.trim();
+    var date   = document.getElementById('eq-date').value || nowStr();
+    var notes  = document.getElementById('eq-notes').value.trim();
+
+    if (!cat)    { toast('Category is required.', true); return; }
+    if (!serial) { toast('Serial / ID is required.', true); return; }
+    if (!person) { toast('Name of who is taking it is required.', true); return; }
+
+    var name = cat + ' \u00b7 ' + serial;
+    var dup = items.some(function (e) {
+      return e.serial.toLowerCase() === serial.toLowerCase() && e.category.toLowerCase() === cat.toLowerCase();
+    });
+    if (dup) { toast('This item already exists in inventory.', true); return; }
+
+    var id = 'eq-' + Date.now();
+    items.push({ id: id, name: name, category: cat, serial: serial, notes: notes, status: 'taken', assignedTo: person, assignedSince: date });
+    logBook.unshift({ id: 'lg-' + Date.now(), eqId: id, eqName: name, person: person, type: 'take', date: date, notes: notes });
+
+    persist();
+    ['eq-cat', 'eq-serial', 'eq-person', 'eq-notes'].forEach(function (i) { document.getElementById(i).value = ''; });
+    document.getElementById('eq-date').value = nowStr();
+    toast(name + ' taken by ' + person + '!');
+    renderAll();
+  };
+
+  // ── Delete / Maintenance ───────────────────────────────────────────────
+  window.deleteItem = function (id) {
+    if (!confirm('Remove this item from inventory? History will be kept.')) return;
+    items = items.filter(function (e) { return e.id !== id; });
+    persist();
+    toast('Item removed.', true);
+    renderAll();
+  };
+
+  window.clearInventory = function () {
+    if (!items.length) { toast('Inventory is already empty.', true); return; }
+    if (!confirm('Delete ALL items from inventory? History will be kept.')) return;
+    items = [];
+    persist();
+    toast('All inventory items deleted.', true);
+    renderAll();
+  };
+
+  window.toggleMaint = function (id) {
+    var eq = items.find(function (e) { return e.id === id; });
+    if (!eq) return;
+    var going = eq.status !== 'maintenance';
+    eq.status = going ? 'maintenance' : 'available';
+    eq.assignedTo = ''; eq.assignedSince = '';
+    logBook.unshift({ id: 'lg-' + Date.now(), eqId: id, eqName: eq.name, person: '-', type: 'maintenance', date: nowStr(), notes: going ? 'Sent to maintenance' : 'Back from maintenance' });
+    persist();
+    toast(eq.name + ' \u2192 ' + eq.status);
+    renderAll();
+  };
+
+  // ── Quick Return ───────────────────────────────────────────────────────
+  window.quickReturn = function (id) {
+    var eq = items.find(function (e) { return e.id === id; });
+    if (!eq) return;
+    logBook.unshift({ id: 'lg-' + Date.now(), eqId: id, eqName: eq.name, person: eq.assignedTo, type: 'return', date: nowStr(), notes: 'Quick return' });
+    eq.status = 'available'; eq.assignedTo = ''; eq.assignedSince = '';
+    persist();
+    toast(eq.name + ' returned to pool!');
+    renderAll();
+  };
+
+  // ── Transfer / Return ──────────────────────────────────────────────────
+  window.toggleTransferTo = function () {
+    var type = document.getElementById('tr-type').value;
+    document.getElementById('tr-to-wrap').style.display = type === 'transfer' ? 'block' : 'none';
+  };
+
+  window.logTransfer = function () {
+    var eqId   = document.getElementById('tr-eq').value;
+    var type   = document.getElementById('tr-type').value;
+    var person = document.getElementById('tr-person').value.trim();
+    var date   = document.getElementById('tr-date').value || nowStr();
+    var notes  = document.getElementById('tr-notes').value.trim();
+
+    if (!eqId) { toast('Select equipment.', true); return; }
+    if (type === 'transfer' && !person) { toast("Enter the recipient's name.", true); return; }
+
+    var eq = items.find(function (e) { return e.id === eqId; });
+    if (!eq) return;
+
+    if (type === 'return') {
+      logBook.unshift({ id: 'lg-' + Date.now(), eqId: eqId, eqName: eq.name, person: eq.assignedTo || '-', type: 'return', date: date, notes: notes });
+      eq.status = 'available'; eq.assignedTo = ''; eq.assignedSince = '';
+      toast(eq.name + ' returned to pool!');
+    } else if (type === 'transfer') {
+      var fromNote = eq.assignedTo ? 'From: ' + eq.assignedTo + (notes ? '. ' : '') : '';
+      logBook.unshift({ id: 'lg-' + Date.now(), eqId: eqId, eqName: eq.name, person: person, type: 'transfer', date: date, notes: fromNote + notes });
+      eq.status = 'taken'; eq.assignedTo = person; eq.assignedSince = date;
+      toast(eq.name + ' transferred to ' + person + '!');
+    } else {
+      logBook.unshift({ id: 'lg-' + Date.now(), eqId: eqId, eqName: eq.name, person: '-', type: 'maintenance', date: date, notes: notes });
+      eq.status = 'maintenance'; eq.assignedTo = ''; eq.assignedSince = '';
+      toast(eq.name + ' sent to maintenance.');
+    }
+
+    document.getElementById('tr-notes').value = '';
+    persist();
+    renderAll();
+  };
+
+  // ── History ────────────────────────────────────────────────────────────
+  window.deleteLog = function (id) {
+    logBook = logBook.filter(function (l) { return l.id !== id; });
+    persist(); renderHistory();
+    toast('Entry deleted.', true);
+  };
+
+  window.clearHistory = function () {
+    if (!confirm('Clear all action history?')) return;
+    logBook = []; persist(); renderHistory();
+    toast('History cleared.', true);
+  };
+
+  // ── Helpers ────────────────────────────────────────────────────────────
+  function nowStr() {
+    var d = new Date();
+    function pad(n){ return String(n).padStart(2,'0'); }
+    var year = d.getFullYear();
+    var month = pad(d.getMonth()+1);
+    var day = pad(d.getDate());
+    var hours = pad(d.getHours());
+    var minutes = pad(d.getMinutes());
+    return year + '-' + month + '-' + day + 'T' + hours + ':' + minutes;
+  }
+
+  function fmtDate(d) {
+    if (!d) return '\u2014';
+    var dt = new Date(d);
+    return dt.toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' })
+         + ' ' + dt.toLocaleTimeString('en-US', { hour: '2-digit', minute: '2-digit' });
+  }
+
+  function statusBadge(s) {
+    var map = {
+      available:   ['badge-available',   'Available'],
+      taken:       ['badge-taken',        'Taken'],
+      maintenance: ['badge-maintenance',  'Maintenance']
+    };
+    var b = map[s] || ['badge-available', s];
+    return '<span class="badge ' + b[0] + '">' + b[1] + '</span>';
+  }
+
+  function actionLabel(t) {
+    var map = {
+      take:        ['var(--accent)',  'Take'],
+      return:      ['var(--green)',   'Return'],
+      transfer:    ['var(--accent2)', 'Transfer'],
+      maintenance: ['var(--red)',     'Maintenance']
+    };
+    var b = map[t] || ['var(--muted)', t];
+    return '<span style="color:' + b[0] + ';font-weight:600;font-size:.8rem">' + b[1] + '</span>';
+  }
+
+  function emptyState(msg) {
+    return '<div class="empty"><div class="empty-icon"><svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22 12H2"/><path d="M5.45 5.11L2 12v6a2 2 0 002 2h16a2 2 0 002-2v-6l-3.45-6.89A2 2 0 0016.76 4H7.24a2 2 0 00-1.79 1.11z"/><line x1="6" y1="16" x2="6.01" y2="16"/><line x1="10" y1="16" x2="10.01" y2="16"/></svg></div>' + msg + '</div>';
+  }
+
+  function userIcon() {
+    return '<svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>';
+  }
+
+  function trashIcon() {
+    return '<svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="3 6 5 6 21 6"/><path d="M19 6l-1 14a2 2 0 01-2 2H8a2 2 0 01-2-2L5 6"/><path d="M10 11v6"/><path d="M14 11v6"/><path d="M9 6V4h6v2"/></svg>';
+  }
+
+  function wrenchIcon() {
+    return '<svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14.7 6.3a1 1 0 000 1.4l1.6 1.6a1 1 0 001.4 0l3.77-3.77a6 6 0 01-7.94 7.94l-6.91 6.91a2.12 2.12 0 01-3-3l6.91-6.91a6 6 0 017.94-7.94l-3.76 3.76z"/></svg>';
+  }
+
+  function returnIcon() {
+    return '<svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 14 4 9 9 4"/><path d="M20 20v-7a4 4 0 00-4-4H4"/></svg>';
+  }
+
+  function getPeople() {
+    var seen = {}, out = [];
+    logBook.forEach(function (l) { if (l.person && l.person !== '-' && !seen[l.person]) { seen[l.person] = 1; out.push(l.person); } });
+    return out;
+  }
+
+  // ── Render Stats ───────────────────────────────────────────────────────
+  function renderStats() {
+    document.getElementById('sc-total').textContent = items.length;
+    document.getElementById('sc-avail').textContent = items.filter(function (e) { return e.status === 'available'; }).length;
+    document.getElementById('sc-taken').textContent = items.filter(function (e) { return e.status === 'taken'; }).length;
+  }
+
+  // ── Render Equipment List ──────────────────────────────────────────────
+  function renderEqList() {
+    var q = (document.getElementById('eq-search').value || '').toLowerCase();
+    var filtered = items.filter(function (e) {
+      return !q || e.name.toLowerCase().includes(q) || e.serial.toLowerCase().includes(q) || e.assignedTo.toLowerCase().includes(q);
+    });
+    var el = document.getElementById('eq-list');
+    if (!filtered.length) { el.innerHTML = emptyState('No items yet. Take the first one!'); return; }
+    el.innerHTML = filtered.map(function (e) {
+      var retBtn = e.status === 'taken'
+        ? '<button class="btn btn-sm btn-return" onclick="quickReturn(\'' + e.id + '\')">' + returnIcon() + ' Return</button>'
+        : '';
+      var meta = e.status === 'taken'
+        ? '<span style="display:flex;align-items:center;gap:4px">' + userIcon() + ' ' + e.assignedTo + ' &middot; ' + fmtDate(e.assignedSince) + '</span>'
+        : (e.notes || e.category);
+      return '<div class="list-item">'
+        + '<div class="li-info"><div class="li-name">' + e.name + ' ' + statusBadge(e.status) + '</div><div class="li-meta">' + meta + '</div></div>'
+        + '<div class="act-btns">' + retBtn
+        + '<button class="btn btn-sm btn-warning" onclick="toggleMaint(\'' + e.id + '\')" title="Toggle Maintenance">' + wrenchIcon() + '</button>'
+        + '<button class="btn btn-sm btn-danger" onclick="deleteItem(\'' + e.id + '\')" title="Remove">' + trashIcon() + '</button>'
+        + '</div></div>';
+    }).join('');
+
+    var cats = [], seen = {};
+    items.forEach(function (e) { if (!seen[e.category]) { seen[e.category] = 1; cats.push(e.category); } });
+    document.getElementById('cat-dl').innerHTML = cats.map(function (c) { return '<option value="' + c + '">'; }).join('');
+    var people = getPeople();
+    document.getElementById('person-dl').innerHTML = people.map(function (p) { return '<option value="' + p + '">'; }).join('');
+  }
+
+  window.renderEqList = renderEqList;
+
+  // ── Render Transfer Form ───────────────────────────────────────────────
+  function renderTransferForm() {
+    var sel = document.getElementById('tr-eq'), prev = sel.value;
+    sel.innerHTML = '<option value="">Select equipment...</option>' + items.map(function (e) {
+      var label = e.name + ' (' + e.status + (e.assignedTo ? ' \u2013 ' + e.assignedTo : '') + ')';
+      return '<option value="' + e.id + '"' + (e.id === prev ? ' selected' : '') + '>' + label + '</option>';
+    }).join('');
+    if (!document.getElementById('tr-date').value) document.getElementById('tr-date').value = nowStr();
+    var people = getPeople();
+    document.getElementById('person-dl2').innerHTML = people.map(function (p) { return '<option value="' + p + '">'; }).join('');
+    toggleTransferTo();
+  }
+
+  // ── Render Quick Return ────────────────────────────────────────────────
+  function renderQR() {
+    var active = items.filter(function (e) { return e.status === 'taken'; });
+    var el = document.getElementById('qr-list');
+    el.innerHTML = active.length ? active.map(function (e) {
+      return '<div class="list-item"><div class="li-info"><div class="li-name">' + e.name + '</div>'
+        + '<div class="li-meta">' + userIcon() + ' ' + e.assignedTo + '</div></div>'
+        + '<button class="btn btn-sm btn-return" onclick="quickReturn(\'' + e.id + '\')">' + returnIcon() + ' Return</button></div>';
+    }).join('') : emptyState('Nothing taken right now.');
+  }
+
+  // ── Render History ─────────────────────────────────────────────────────
+  function renderHistory() {
+    var q  = (document.getElementById('hist-search').value || '').toLowerCase();
+    var tf = document.getElementById('hist-type').value;
+    var filtered = logBook.filter(function (l) {
+      return (!q || l.eqName.toLowerCase().includes(q) || l.person.toLowerCase().includes(q)) && (!tf || l.type === tf);
+    });
+    var tbody = document.getElementById('hist-tbody');
+    if (!filtered.length) { tbody.innerHTML = '<tr><td colspan="7">' + emptyState('No history yet.') + '</td></tr>'; return; }
+    tbody.innerHTML = filtered.map(function (l, i) {
+      return '<tr>'
+        + '<td style="color:var(--muted);font-size:.72rem">' + (i + 1) + '</td>'
+        + '<td style="font-size:.78rem;color:var(--muted)">' + fmtDate(l.date) + '</td>'
+        + '<td><strong>' + l.eqName + '</strong></td>'
+        + '<td>' + actionLabel(l.type) + '</td>'
+        + '<td>' + (l.person !== '-' ? '<span style="display:inline-flex;align-items:center;gap:4px">' + userIcon() + ' ' + l.person + '</span>' : '<span style="color:var(--muted)">\u2014</span>') + '</td>'
+        + '<td style="font-size:.78rem;color:var(--muted);max-width:150px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">' + (l.notes || '\u2014') + '</td>'
+        + '<td><button class="btn btn-sm btn-danger" onclick="deleteLog(\'' + l.id + '\')">' + trashIcon() + '</button></td></tr>';
+    }).join('');
+  }
+
+  window.renderHistory = renderHistory;
+
+  // ── Render All ─────────────────────────────────────────────────────────
+  function renderAll() {
+    renderStats();
+    renderEqList();
+    renderTransferForm();
+    renderQR();
+    renderHistory();
+    lucide.createIcons();
+  }
+
+  // ── Seed demo data ─────────────────────────────────────────────────────
+  
+
+  document.getElementById('eq-date').value = nowStr();
+  renderAll();
+  if(!document.getElementById('eq-date').value){document.getElementById('eq-date').value=nowStr();}
+})();
+</script>
+</body>
+</html>
